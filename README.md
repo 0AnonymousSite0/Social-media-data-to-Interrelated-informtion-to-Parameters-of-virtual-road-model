@@ -18,7 +18,7 @@ Bert (https://github.com/google-research/bert), Tensorflow (https://github.com/t
 
 1.4 Before submitting these codes to Github, all of them have been tested to be well-performed as shown in the video above.
 
-1.5 The Python environment clone based on Anaconda is provided in Google Drive (https://drive.google.com/drive/folders/1iqD30Gqp4zKBqnEm0Uup64xuQndZz6lT?usp=sharing). Even so, we are not able to guarantee their operation in other computing environments due to the differences in the python version, computer operating system, and adopted hardware.
+1.5 The running environment clone based on Anaconda is provided in Google Drive (https://drive.google.com/drive/folders/1AjB1-vfJvOrtOM6J6NGbZhTUoHTRnemO?usp=sharing). Even so, we are not able to guarantee their operation in other computing environments due to the differences in the python version, computer operating system, and adopted hardware.
 
 1.6 As for anything regarding the copyright, please refer to the MIT License or contact the authors.
 
@@ -27,12 +27,15 @@ Bert (https://github.com/google-research/bert), Tensorflow (https://github.com/t
 ## 2.1 Run the whole approach: “SM_to_Interrelated_Information_to_VRM_Parameters.py” 
 
 Use your own key of twitter API and Neo4j parameters
+
 ![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot1.jpg)
 
 Adjust the file dictionaries and replace the tailor-made model
+
 ![image](![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot2.jpg)
 
 Adjust the file directionries regarding the convertor
+
 ![image](![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot3.jpg)
 
 ## 2.2 Train the SM2II model and develop the II2VP convertor:
