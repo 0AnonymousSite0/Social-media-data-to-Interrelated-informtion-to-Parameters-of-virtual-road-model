@@ -1,0 +1,9 @@
+head_type,tail_type,relation,index
+None,None,None,0
+Road,Status,Road_status,1
+Lane,Status,Lane_status,2
+Road,Position_of_road,Road_position,3
+Lane,Road,Lane_of_Road,4
+Lane,Direction_of_lane,Lane_direction,5
+Lane,Position_of_lane,Lane_position,6
+Road,Direction_of_road,Road_direction,7
