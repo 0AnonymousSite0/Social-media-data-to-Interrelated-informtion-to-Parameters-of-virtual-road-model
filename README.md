@@ -1,12 +1,12 @@
 # Extract interrelated information from social media data and incorporate them into virtual road models
 
 
-# 0 A demonstration video of the SM2II2VP approach 
+# 0. A demonstration video of the SM2II2VP approach 
 
 ![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/A%20demonstrtaion%20video.gif)
 
 
-# 1 General Introduction
+# 1. General Introduction
 
 1.1 This repository aims at providing the codes and data regarding the paper entitled “……” for the public, and it is developed by The University of ****.
 
@@ -22,10 +22,22 @@ Bert (https://github.com/google-research/bert), Tensorflow (https://github.com/t
 1.6 As for anything regarding the copyright, please refer to the MIT License or contact the authors.
 
 
-# 2 The specifications of developed codes
+# 2 The specifications of reusing the codes
+
+2.1 Run the “SM_to_Interrelated_Information_to_VRM_Parameters.py”
+
+2.1 Use your own key of twitter API
+
+2.2 Use your own Neo4j parameters
+
+2.3 The license of ArcGis and VISSIM is indispensable
 
 
-## 3.1 Codes for training an object detector with transfer learning
+
+
+
+
+## 1.1 Codes for training an object detector with transfer learning
 
 
 This is for doing transfer learning of ready-developed detector (i.e., Yolo v3 in this case study). The manually labelled images are attached in the "labelled images of local traffic for transfer learning" file. We use the open-source tool 
