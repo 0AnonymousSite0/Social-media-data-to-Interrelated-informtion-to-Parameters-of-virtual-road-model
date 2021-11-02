@@ -29,15 +29,15 @@ api = tweepy.API(auth)
 
 graph = Graph('http://localhost:7474', username='neo4j', password='ab014415')
 
-def claddify_traffic_and_non_traffic_tweet(Id):
-    data_dir=r"--data_dir=D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master-tweetclassification\bin/predicate_classifiction/classification_data/"+Id
-    output_dir=r" --output_dir=D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master-tweetclassification/output/predicate_classification_model/epochs1700/"+Id+r"/"
-    os.makedirs("D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master-tweetclassification/output/predicate_classification_model/epochs1700/"+Id+r"/")
-    classification_command=r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master-tweetclassification\run_predicate_classification.py "+data_dir+output_dir
+def classify_tweets_related_or_not(Id):
+    data_dir=r"--data_dir=file dictionary of classification model\bin/predicate_classifiction/classification_data/"+Id
+    output_dir=r" --output_dir=file dictionary of classification model/output/predicate_classification_model/epochs1700/"+Id+r"/"
+    os.makedirs("file dictionary of classification model/output/predicate_classification_model/epochs1700/"+Id+r"/")
+    classification_command=r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe file dictionary of classification model\run_predicate_classification.py "+data_dir+output_dir
     print (data_dir)
     os.system(classification_command)
 def check_classification_result(Id):
-    f = open(r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master-tweetclassification/output/predicate_classification_model/epochs1700/"+Id+r"/predicate_predict.txt")
+    f = open(r"file dictionary of classification model/output/predicate_classification_model/epochs1700/"+Id+r"/predicate_predict.txt")
     classification_result=f.read()
     classification_result=classification_result.replace("\n", "")
     print(classification_result)
@@ -45,19 +45,19 @@ def check_classification_result(Id):
         return True
     else:
         return False
-def predict_relations(Id):
-    data_dir = r"--data_dir=D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master-tweetclassification\bin/predicate_classifiction/classification_data/" + Id
-    output_dir = r" --output_dir=D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master/output/predicate_classification_model/epochs700/" + Id + r"/"
-    os.makedirs("D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master/output/predicate_classification_model/epochs700/"+Id+r"/")
-    predict_relations_command = r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\run_predicate_classification.py " + data_dir + output_dir
-    os.system(predict_relations_command)
-    print("finish predict_relations")
-def check_predict_relations(Id):
-    f = open(r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master/output/predicate_classification_model/epochs700/"+Id+r"/predicate_predict.txt")
+def infer_relations(Id):
+    data_dir = r"--data_dir=file dictionary of classification model\bin/predicate_classifiction/classification_data/" + Id
+    output_dir = r" --output_dir=file dictionary of models for inferring interrelations and recognizing subject/objects/output/predicate_classification_model/epochs700/" + Id + r"/"
+    os.makedirs("file dictionary of models for inferring interrelations and recognizing subject/objects/output/predicate_classification_model/epochs700/"+Id+r"/")
+    infer_relations_command = r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe file dictionary of models for inferring interrelations and recognizing subject/objects\run_predicate_classification.py " + data_dir + output_dir
+    os.system(infer_relations_command)
+    print("finish infer_relations")
+def check_inferred_relations(Id):
+    f = open(r"file dictionary of models for inferring interrelations and recognizing subject/objects/output/predicate_classification_model/epochs700/"+Id+r"/predicate_predict.txt")
     relations_result=f.read()
     relations_result=relations_result.replace("\n", "")
     str_list = relations_result.split(" ")
-    print("check_predict_relations",str_list)
+    print("check_inferred_relations",str_list)
     if ("Road_status" in str_list) and ( "Road_position" in str_list) and ("Lane_of_Road" not in str_list) :
         return True
     elif ("Road_status" in str_list) and ( "Road_position" in str_list) and ("Lane_of_Road" in str_list) and ("Lane_status" in str_list) and (( "Lane_position" in str_list) or ("Lane_direction" in str_list)):
@@ -65,28 +65,24 @@ def check_predict_relations(Id):
     else:
         return False
 def prepare_data_for_extracting_SO(Id):
-    data_dir = r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master-tweetclassification\bin/predicate_classifiction/classification_data/" + Id+"/test"
-    predicate_classifiction_infer_file_dir=r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\output\predicate_classification_model\epochs700/"+Id+"/"
-    output_dir = r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\bin\subject_object_labeling\sequence_labeling_data/" + Id + r"/test"
-    os.makedirs(r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\bin\subject_object_labeling\sequence_labeling_data/" + Id + r"/test/")
-    #prepare_data_for_extracting_SO_command = r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\bin/predicate_classifiction/prepare_data_for_labeling_infer.py"
-    #os.system(prepare_data_for_extracting_SO_command)
+    data_dir = r"file dictionary of classification model\bin/predicate_classifiction/classification_data/" + Id+"/test"
+    predicate_classifiction_infer_file_dir=r"file dictionary of models for inferring interrelations and recognizing subject/objects\output\predicate_classification_model\epochs700/"+Id+"/"
+    output_dir = r"file dictionary of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/" + Id + r"/test"
+    os.makedirs(r"file dictionary of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/" + Id + r"/test/")
     prepare_data_for_subject_object_labeling_infer(data_dir,predicate_classifiction_infer_file_dir,output_dir)
-
 def extract_SO(Id):
-    data_dir = r"--data_dir=D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\bin\subject_object_labeling\sequence_labeling_data/" + Id
-    output_dir = r" --output_dir=D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\output/sequnce_infer_out/epochs700/ckpt12415/" + Id
-    os.makedirs(r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\output/sequnce_infer_out/epochs700/ckpt12415/"+Id+r"/")
-    extract_SO_command = r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\run_sequnce_labeling.py " + data_dir + output_dir
+    data_dir = r"--data_dir=file dictionary of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/" + Id
+    output_dir = r" --output_dir=file dictionary of models for inferring interrelations and recognizing subject/objects\output/sequnce_infer_out/epochs700/ckpt12415/" + Id
+    os.makedirs(r"file dictionary of models for inferring interrelations and recognizing subject/objects\output/sequnce_infer_out/epochs700/ckpt12415/"+Id+r"/")
+    extract_SO_command = r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe file dictionary of models for inferring interrelations and recognizing subject/objects\run_sequnce_labeling.py " + data_dir + output_dir
     os.system(extract_SO_command)
-
 def generate_json_result(Id):
     spo_list_manager = Sorted_relation_and_entity_list_Management(
-        r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\bin\subject_object_labeling\sequence_labeling_data/"+Id+"/test",
-        r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\output\sequnce_infer_out\epochs700\ckpt12415/"+Id+"/",
+        r"file dictionary of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/"+Id+"/test",
+        r"file dictionary of models for inferring interrelations and recognizing subject/objects\output\sequnce_infer_out\epochs700\ckpt12415/"+Id+"/",
         Competition_Mode=True)
     spo_list_manager.produce_output_file(
-        OUT_RESULTS_DIR=r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master/output/final_text_spo_list_result/"+Id,
+        OUT_RESULTS_DIR=r"file dictionary of models for inferring interrelations and recognizing subject/objects/output/final_text_spo_list_result/"+Id,
         keep_empty_spo_list=True)
 
 
@@ -107,7 +103,7 @@ class MyStreamListener(tweepy.StreamListener):
         tweet = tweet.replace("  ", " ")
         print(tweet)
         print(data['id'])
-        tweet_storage=r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master-tweetclassification\bin/predicate_classifiction/classification_data/"+str(data['id'])+r"/test/"
+        tweet_storage=r"file dictionary of classification model\bin/predicate_classifiction/classification_data/"+str(data['id'])+r"/test/"
         os.makedirs(tweet_storage)
         with open(tweet_storage+"text.txt",'w') as tf:
             tf.write(tweet)
@@ -116,23 +112,22 @@ class MyStreamListener(tweepy.StreamListener):
         with open(tweet_storage+"token_in_not_UNK.txt",'w') as tf:
             tf.write(tweet)
 
-        if str(data['user']['id'])=="1348585566040772609":
-            claddify_traffic_and_non_traffic_tweet(str(data['id']))
+        if str(data['user']['id'])=="1348585566040772609": # only for test 
+            classify_tweets_related_or_not(str(data['id']))
             print("check_classification_result(str(data['id']))",check_classification_result(str(data['id'])))
             if check_classification_result(str(data['id']))==True:
-                predict_relations(str(data['id']))
-                print("check_predict_relations(str(data['id']))", check_predict_relations(str(data['id'])))
-                if check_predict_relations(str(data['id']))==True:
+                infer_relations(str(data['id']))
+                print("check_inferred_relations(str(data['id']))", check_inferred_relations(str(data['id'])))
+                if check_inferred_relations(str(data['id']))==True:
                     prepare_data_for_extracting_SO(str(data['id']))
                     print("prepare_data_for_extracting_SO finish")
                     extract_SO(str(data['id']))
                     print("extract_SO finish")
                     generate_json_result(str(data['id']))
                     print("generate_json_result finish")
-                    SPO2KG_Function(r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master/output/final_text_spo_list_result/"+str(data['id'])+r"\keep_empty_spo_list_subject_predicate_object_predict_output.json",graph)
+                    SPO2KG_Function(r"file dictionary of models for inferring interrelations and recognizing subject/objects/output/final_text_spo_list_result/"+str(data['id'])+r"\keep_empty_spo_list_subject_predicate_object_predict_output.json",graph)
                     print("Tweet2KnowledgeGraph finish")
-
-        subprocess.Popen([r"C:\Program Files\ArcGIS\Pro/bin\Python\envs/arcgispro-py3\python.exe", r"D:/ZHOUSHENGHUA/PythonNeo4j/geodatabase.py"])
+        subprocess.Popen([r"C:\Program Files\ArcGIS\Pro/bin\Python\envs/arcgispro-py3\python.exe", r"D:/ZHOUSHENGHUA/PythonNeo4j/Convert_Information_triplets to_VRM_parameters.py"])
         return True
 
     def on_error(self, status):
@@ -144,8 +139,7 @@ myStreamListener = MyStreamListener()
 myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
 #api.verify_credentials()
 
-# --- 支持异步，参数is_async，推荐使用异步形式
-myStream.filter(track=["st OR lane"], filter_level="low", follow=["1348585566040772609"],locations=[-84.501918,38.039574,-84.499156,38.049216], is_async=True)
+myStream.filter(track=["keywords for searching tweets"], filter_level="low",locations=[-84.501918,38.039574,-84.499156,38.049216], is_async=True)
 #locations=[-84.501918,38.039574,-84.499156,38.049216]
 
 print (myStream)
