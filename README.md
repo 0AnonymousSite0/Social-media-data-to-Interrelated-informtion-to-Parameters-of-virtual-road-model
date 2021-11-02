@@ -30,13 +30,13 @@ Use your own key of twitter API and Neo4j parameters
 
 ![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot1.jpg)
 
-Adjust the file dictionaries and replace the tailor-made model
+Adjust the file directories and replace the tailor-made model
 
-![image](![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot2.jpg)
+![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot2.jpg)
 
-Adjust the file directionries regarding the convertor
+Adjust the file directories regarding the convertor
 
-![image](![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot3.jpg)
+![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot3.jpg)
 
 ## 2.2 Train the SM2II model and develop the II2VP convertor:
 
