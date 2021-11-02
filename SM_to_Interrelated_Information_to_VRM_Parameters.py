@@ -30,14 +30,14 @@ api = tweepy.API(auth)
 graph = Graph('http://localhost:7474', username='neo4j', password='ab014415')
 
 def classify_tweets_related_or_not(Id):
-    data_dir=r"--data_dir=file dictionary of classification model\bin/predicate_classifiction/classification_data/"+Id
-    output_dir=r" --output_dir=file dictionary of classification model/output/predicate_classification_model/epochs1700/"+Id+r"/"
-    os.makedirs("file dictionary of classification model/output/predicate_classification_model/epochs1700/"+Id+r"/")
-    classification_command=r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe file dictionary of classification model\run_predicate_classification.py "+data_dir+output_dir
+    data_dir=r"--data_dir=file directory of classification model\bin/predicate_classifiction/classification_data/"+Id
+    output_dir=r" --output_dir=file directory of classification model/output/predicate_classification_model/epochs1700/"+Id+r"/"
+    os.makedirs("file directory of classification model/output/predicate_classification_model/epochs1700/"+Id+r"/")
+    classification_command=r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe file directory of classification model\run_predicate_classification.py "+data_dir+output_dir
     print (data_dir)
     os.system(classification_command)
 def check_classification_result(Id):
-    f = open(r"file dictionary of classification model/output/predicate_classification_model/epochs1700/"+Id+r"/predicate_predict.txt")
+    f = open(r"file directory of classification model/output/predicate_classification_model/epochs1700/"+Id+r"/predicate_predict.txt")
     classification_result=f.read()
     classification_result=classification_result.replace("\n", "")
     print(classification_result)
@@ -46,14 +46,14 @@ def check_classification_result(Id):
     else:
         return False
 def infer_relations(Id):
-    data_dir = r"--data_dir=file dictionary of classification model\bin/predicate_classifiction/classification_data/" + Id
-    output_dir = r" --output_dir=file dictionary of models for inferring interrelations and recognizing subject/objects/output/predicate_classification_model/epochs700/" + Id + r"/"
-    os.makedirs("file dictionary of models for inferring interrelations and recognizing subject/objects/output/predicate_classification_model/epochs700/"+Id+r"/")
-    infer_relations_command = r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe file dictionary of models for inferring interrelations and recognizing subject/objects\run_predicate_classification.py " + data_dir + output_dir
+    data_dir = r"--data_dir=file directory of classification model\bin/predicate_classifiction/classification_data/" + Id
+    output_dir = r" --output_dir=file directory of models for inferring interrelations and recognizing subject/objects/output/predicate_classification_model/epochs700/" + Id + r"/"
+    os.makedirs("file directory of models for inferring interrelations and recognizing subject/objects/output/predicate_classification_model/epochs700/"+Id+r"/")
+    infer_relations_command = r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe file directory of models for inferring interrelations and recognizing subject/objects\run_predicate_classification.py " + data_dir + output_dir
     os.system(infer_relations_command)
     print("finish infer_relations")
 def check_inferred_relations(Id):
-    f = open(r"file dictionary of models for inferring interrelations and recognizing subject/objects/output/predicate_classification_model/epochs700/"+Id+r"/predicate_predict.txt")
+    f = open(r"file directory of models for inferring interrelations and recognizing subject/objects/output/predicate_classification_model/epochs700/"+Id+r"/predicate_predict.txt")
     relations_result=f.read()
     relations_result=relations_result.replace("\n", "")
     str_list = relations_result.split(" ")
@@ -65,24 +65,24 @@ def check_inferred_relations(Id):
     else:
         return False
 def prepare_data_for_extracting_SO(Id):
-    data_dir = r"file dictionary of classification model\bin/predicate_classifiction/classification_data/" + Id+"/test"
-    predicate_classifiction_infer_file_dir=r"file dictionary of models for inferring interrelations and recognizing subject/objects\output\predicate_classification_model\epochs700/"+Id+"/"
-    output_dir = r"file dictionary of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/" + Id + r"/test"
-    os.makedirs(r"file dictionary of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/" + Id + r"/test/")
+    data_dir = r"file directory of classification model\bin/predicate_classifiction/classification_data/" + Id+"/test"
+    predicate_classifiction_infer_file_dir=r"file directory of models for inferring interrelations and recognizing subject/objects\output\predicate_classification_model\epochs700/"+Id+"/"
+    output_dir = r"file directory of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/" + Id + r"/test"
+    os.makedirs(r"file directory of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/" + Id + r"/test/")
     prepare_data_for_subject_object_labeling_infer(data_dir,predicate_classifiction_infer_file_dir,output_dir)
 def extract_SO(Id):
-    data_dir = r"--data_dir=file dictionary of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/" + Id
-    output_dir = r" --output_dir=file dictionary of models for inferring interrelations and recognizing subject/objects\output/sequnce_infer_out/epochs700/ckpt12415/" + Id
-    os.makedirs(r"file dictionary of models for inferring interrelations and recognizing subject/objects\output/sequnce_infer_out/epochs700/ckpt12415/"+Id+r"/")
-    extract_SO_command = r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe file dictionary of models for inferring interrelations and recognizing subject/objects\run_sequnce_labeling.py " + data_dir + output_dir
+    data_dir = r"--data_dir=file directory of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/" + Id
+    output_dir = r" --output_dir=file directory of models for inferring interrelations and recognizing subject/objects\output/sequnce_infer_out/epochs700/ckpt12415/" + Id
+    os.makedirs(r"file directory of models for inferring interrelations and recognizing subject/objects\output/sequnce_infer_out/epochs700/ckpt12415/"+Id+r"/")
+    extract_SO_command = r"C:\Users\CivilIM\Anaconda3\envs\TF115P37\python.exe file directory of models for inferring interrelations and recognizing subject/objects\run_sequnce_labeling.py " + data_dir + output_dir
     os.system(extract_SO_command)
 def generate_json_result(Id):
     spo_list_manager = Sorted_relation_and_entity_list_Management(
-        r"file dictionary of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/"+Id+"/test",
-        r"file dictionary of models for inferring interrelations and recognizing subject/objects\output\sequnce_infer_out\epochs700\ckpt12415/"+Id+"/",
+        r"file directory of models for inferring interrelations and recognizing subject/objects\bin\subject_object_labeling\sequence_labeling_data/"+Id+"/test",
+        r"file directory of models for inferring interrelations and recognizing subject/objects\output\sequnce_infer_out\epochs700\ckpt12415/"+Id+"/",
         Competition_Mode=True)
     spo_list_manager.produce_output_file(
-        OUT_RESULTS_DIR=r"file dictionary of models for inferring interrelations and recognizing subject/objects/output/final_text_spo_list_result/"+Id,
+        OUT_RESULTS_DIR=r"file directory of models for inferring interrelations and recognizing subject/objects/output/final_text_spo_list_result/"+Id,
         keep_empty_spo_list=True)
 
 
@@ -103,7 +103,7 @@ class MyStreamListener(tweepy.StreamListener):
         tweet = tweet.replace("  ", " ")
         print(tweet)
         print(data['id'])
-        tweet_storage=r"file dictionary of classification model\bin/predicate_classifiction/classification_data/"+str(data['id'])+r"/test/"
+        tweet_storage=r"file directory of classification model\bin/predicate_classifiction/classification_data/"+str(data['id'])+r"/test/"
         os.makedirs(tweet_storage)
         with open(tweet_storage+"text.txt",'w') as tf:
             tf.write(tweet)
@@ -125,7 +125,7 @@ class MyStreamListener(tweepy.StreamListener):
                     print("extract_SO finish")
                     generate_json_result(str(data['id']))
                     print("generate_json_result finish")
-                    SPO2KG_Function(r"file dictionary of models for inferring interrelations and recognizing subject/objects/output/final_text_spo_list_result/"+str(data['id'])+r"\keep_empty_spo_list_subject_predicate_object_predict_output.json",graph)
+                    SPO2KG_Function(r"file directory of models for inferring interrelations and recognizing subject/objects/output/final_text_spo_list_result/"+str(data['id'])+r"\keep_empty_spo_list_subject_predicate_object_predict_output.json",graph)
                     print("Tweet2KnowledgeGraph finish")
         subprocess.Popen([r"C:\Program Files\ArcGIS\Pro/bin\Python\envs/arcgispro-py3\python.exe", r"D:/ZHOUSHENGHUA/PythonNeo4j/Convert_Information_triplets to_VRM_parameters.py"])
         return True
