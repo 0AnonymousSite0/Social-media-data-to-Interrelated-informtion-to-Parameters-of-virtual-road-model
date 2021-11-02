@@ -6,7 +6,7 @@
 
 # 0. A demonstration video of the SM2II2VP approach 
 
-![image](https://github.com/0AnonymousSite0/Data-and-Codes-for-Integrating-Computer-Vision-and-Traffic-Modelling/blob/master/2.%20Video%20clips%20and%20Screenshots/List%20of%20all%20materials%20in%20the%20GitHub.png)
+![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/A%20demonstrtaion%20video.gif)
 
 
 # 1. Certain video clips during the study
