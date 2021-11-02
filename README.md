@@ -1,45 +1,28 @@
-# Social media for road transport model
- Exploit social media data for road transport model
- 
- 
-# Data-and-Codes-for-Integrating-Computer-Vision-and-Traffic-Modelling
+# Extract interrelated information from social media data and incorporate them into virtual road models
 
-# 0. A demonstration video of the SM2II2VP approach 
+
+# 0 A demonstration video of the SM2II2VP approach 
 
 ![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/A%20demonstrtaion%20video.gif)
 
 
-# 1. Certain video clips during the study
+# 1 General Introduction
 
-## 1.1 Computer vision for perceiving real-time traffic conditions
+1.1 This repository aims at providing the codes and data regarding the paper entitled “……” for the public, and it is developed by The University of ****.
 
-![image](https://github.com/0AnonymousSite0/Data-and-Codes-for-Integrating-Computer-Vision-and-Traffic-Modelling/blob/master/2.%20Video%20clips%20and%20Screenshots/Video%20clips/Video%20Clip%20(1).gif)
+1.2 All codes are developed on Python 3.6 or 3.7, and the IDE adopted is PyCharm (Professional version). The codes also support the GPU computing for higher speed; the Navida CUDA we adopted is V10.0.130.
 
-![image](https://github.com/0AnonymousSite0/Data-and-Codes-for-Integrating-Computer-Vision-and-Traffic-Modelling/blob/master/2.%20Video%20clips%20and%20Screenshots/Video%20clips/Video%20Clip%20(2).gif)
+1.3 We greatly appreciate the selfless spirits of these voluntary contributors of a series of open python libraries, including 
+Bert (https://github.com/google-research/bert), Tensorflow (https://github.com/tensorflow/models), pytorch (https://github.com/pytorch/pytorch), Keras (https://github.com/keras-team/keras), Numpy (https://numpy.org/), labelImg (https://github.com/tzutalin/labelImg), pyExcelerator (https://github.com/WoLpH/pyExcelerator), py2neo (https://github.com/py2neo-org/py2neo), some base works (https://github.com/yongzhuo/Keras-TextClassification, https://github.com/zjunlp/DeepKE/tree/master), and so on. Our work stands on the shoulders of these giants.
 
-![image](https://github.com/0AnonymousSite0/Data-and-Codes-for-Integrating-Computer-Vision-and-Traffic-Modelling/blob/master/2.%20Video%20clips%20and%20Screenshots/Video%20clips/Video%20Clip%20(3).gif) 
+1.4 Before submitting these codes to Github, all of them have been tested to be well-performed as shown in the video above.
 
-## 1.2 Traffic simulation for near-real-time optimization
+1.5 The Python environment clone based on Anaconda is provided in Google Drive (https://drive.google.com/drive/folders/1iqD30Gqp4zKBqnEm0Uup64xuQndZz6lT?usp=sharing). Even so, we are not able to guarantee their operation in other computing environments due to the differences in the python version, computer operating system, and adopted hardware.
 
-![image](https://github.com/0AnonymousSite0/Data-and-Codes-for-Integrating-Computer-Vision-and-Traffic-Modelling/blob/master/2.%20Video%20clips%20and%20Screenshots/Video%20clips/Video-Clip-_Traffic-simulation_.gif) 
-
-# 2 General Introduction
-
-2.1 This repository aims at providing the codes and data regarding the paper entitled “Integrating Computer Vision and Traffic Simulation for Near-real-time Signal Timing Optimization of Multiple Intersections” for the public, and it is developed by The University of ****.
-
-2.2 All codes are developed on Python 3.6, and the IDE adopted is PyCharm (Professional version). The codes also support the GPU computing for higher speed; the Navida CUDA we adopted is V10.0.130.
-
-2.3 We greatly appreciate the selfless spirits of these voluntary contributors of a series of open python libraries, including 
-OpenCV (https://opencv.org/), Tensorflow (https://github.com/tensorflow/models), Keras (https://github.com/keras-team/keras), Numpy (https://numpy.org/), labelImg (https://github.com/tzutalin/labelImg), pyExcelerator (https://github.com/WoLpH/pyExcelerator), some base works ( https://github.com/Cartucho/mAP, https://github.com/peter-moran/vehicle-detector, https://github.com/ckyrkou/CNN_Car_Detector, https://github.com/nicholaskajoh/ivy, and https://github.com/qqwweee/keras-yolo3), and so on. Our work stands on the shoulders of these giants.
-
-2.4 Before submitting these codes to Github, all of them have been tested to be well-performed as shown in the screenshots below.
-
-2.5 The Python environment clone based on Anaconda is provided in Google Drive (https://drive.google.com/drive/folders/1iqD30Gqp4zKBqnEm0Uup64xuQndZz6lT?usp=sharing). Even so, we are not able to guarantee their operation in other computing environments due to the differences in the python version, computer operating system, and adopted hardware.
-
-2.6 As for anything regarding the copyright, please refer to the MIT License.
+1.6 As for anything regarding the copyright, please refer to the MIT License or contact the authors.
 
 
-# 3. The specifications of developed codes
+# 2 The specifications of developed codes
 
 
 ## 3.1 Codes for training an object detector with transfer learning
