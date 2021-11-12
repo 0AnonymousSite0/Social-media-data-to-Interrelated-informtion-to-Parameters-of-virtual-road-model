@@ -2,7 +2,7 @@
 
 !!! As the paper is under review, all contents in this repository are not allowed to be used by anyone except the authors until this announcement is deleted.  
 
-# 0. A demonstration video of the SM2II2VP approach 
+# 0. A demonstration video of the SMD2II2PM approach 
 
 ![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/A%20demonstrtaion%20video.gif)
 
