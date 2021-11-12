@@ -1,6 +1,6 @@
 # Extract interrelated information from social media data and incorporate them into virtual road models
 
-!!! As the paper is under review, all contents in this repository are not allowed to be used by anyone except the authors until this announcement is deleted.  
+!!! As the paper is under review, all contents in this repository currently are not allowed to be used by anyone until this announcement is deleted.  
 
 # 0. A demonstration video of the SMD2II2PM approach 
 
