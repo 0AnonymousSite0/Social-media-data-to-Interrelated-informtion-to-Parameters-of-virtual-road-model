@@ -24,7 +24,7 @@ Bert (https://github.com/google-research/bert), Tensorflow (https://github.com/t
 
 # 2 The specifications of critical codes
 
-## 2.1 Run the whole approach: “SM_to_Interrelated_Information_to_VRM_Parameters.py” 
+## 2.1 Run the whole approach: “SMD2II2PM.py” 
 
 Use your own key of twitter API and Neo4j parameters
 
