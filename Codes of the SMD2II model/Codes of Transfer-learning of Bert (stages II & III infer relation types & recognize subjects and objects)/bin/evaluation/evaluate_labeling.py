@@ -99,7 +99,6 @@ def calc_pr(predict_filename, golden_filename):
             #print(is_spo_correct(spo, golden_spo_set, alias_dict, loc_dict))
             if is_spo_correct(spo, golden_spo_set, alias_dict, loc_dict):
                 correct_sum += 1
-    correct_sum=5165
     print('correct spo num = ', correct_sum)
     print('submitted spo num = ', predict_sum)
     print('golden set spo num = ', recall_sum)
