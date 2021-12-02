@@ -44,7 +44,7 @@ File dictionaries of the codes for training the SMD2II model and developing the 
 
 ![image](https://github.com/0AnonymousSite0/Social-media-data-to-Interrelated-informtion-to-Parameters-of-virtual-road-model/blob/main/Screenshots/File%20dictionaries%20of%20codes.png)
 
-The screenshot of testing the finally outputted interreation triplets of SMD2II model 
+The screenshot of testing the finally outputted interreation triplets of SMD2II model  
 
 ![image](https://github.com/0AnonymousSite0/Social-media-data-to-Interrelated-informtion-to-Parameters-of-virtual-road-model/blob/main/Fig.%20S1%20Final_Precision_Recall_F1_of_SMD2II.png)
 
