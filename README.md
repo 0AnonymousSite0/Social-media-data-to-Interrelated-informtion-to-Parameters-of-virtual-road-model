@@ -4,7 +4,7 @@
 
 # 0. A demonstration video of the SMD2II2PM approach 
 
-![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/A%20demonstrtaion%20video.gif)
+![image](https://github.com/0AnonymousSite0/Social-media-data-to-Interrelated-informtion-to-Parameters-of-virtual-road-model/blob/main/Screenshots/A%20demonstrtaion%20video.gif)
 
 
 # 1. General Introduction
@@ -28,17 +28,26 @@ Bert (https://github.com/google-research/bert), Tensorflow (https://github.com/t
 
 Use your own key of twitter API and Neo4j parameters
 
-![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot1.jpg)
+![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots/Screenshot1.jpg)
 
 Adjust the file directories and replace the tailor-made model
 
-![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot2.jpg)
+![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots/Screenshot2.jpg)
 
 Adjust the file directories regarding the convertor
 
-![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main/Screenshots%20and%20Figures/Screenshot3.jpg)
+![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main//Screenshots/Screenshot3.jpg)
 
-## 2.2 Train the SM2II model and develop the II2VP convertor:
+## 2.2 Train the SMD2II model and develop the II2PM convertor:
+
+File dictionaries of the codes for training the SMD2II model and developing the II2PM convertor
+
+![image](https://github.com/0AnonymousSite0/Social-media-data-to-Interrelated-informtion-to-Parameters-of-virtual-road-model/blob/main/Screenshots/File%20dictionaries%20of%20codes.png)
+
+The screenshot of testing the finally outputted interreation triplets of SMD2II model 
+
+![image](https://github.com/0AnonymousSite0/Social-media-data-to-Interrelated-informtion-to-Parameters-of-virtual-road-model/blob/main/Fig.%20S1%20Final_Precision_Recall_F1_of_SMD2II.png)
+
 
 
 
