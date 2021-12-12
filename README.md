@@ -2,7 +2,7 @@
 
 !!! As the paper is under review, all contents in this repository currently are not allowed to be used by anyone until this announcement is deleted.  
 
-# 0. A demonstration video of the SMD2II2PM approach 
+# 0. A demonstration video of the SMD2II2PM approach  
 
 ![image](https://github.com/0AnonymousSite0/Social-media-data-to-Interrelated-informtion-to-Parameters-of-virtual-road-model/blob/main/Screenshots/A%20demonstrtaion%20video.gif)
 
