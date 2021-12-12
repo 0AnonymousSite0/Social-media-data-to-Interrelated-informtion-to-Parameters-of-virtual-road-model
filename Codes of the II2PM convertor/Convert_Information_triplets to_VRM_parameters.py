@@ -1,7 +1,4 @@
-# Name: ExtractFeaturesByLocationAndAttribute.py
-# Description:  Extracts features to a new feature class based on a location and an attribute query.
 
-# Import system modules
 import arcpy
 import math
 import  pandas  as pd
@@ -18,7 +15,6 @@ import operator
 from functools import reduce
 import difflib
 
-#The used environment is D:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe
 
 
 def angle(v1, v2):
@@ -28,10 +24,10 @@ def angle(v1, v2):
     dy2 = v2[3] - v2[1]
     angle1 = math.atan2(dy1, dx1)
     angle1 = int(angle1 * 180/math.pi)
-    # print(angle1)
+
     angle2 = math.atan2(dy2, dx2)
     angle2 = int(angle2 * 180/math.pi)
-    # print(angle2)
+
     if angle1*angle2 >= 0:
         included_angle = abs(angle1-angle2)
     else:
@@ -125,7 +121,6 @@ def past_mode(road_A,road_B):
 
     for i in road_segments:
         connections = df[df['tolink'] == str(int(i)+1)].index.tolist()
-        #print("filtered_line_with_sequence", connections)
         for j in connections:
             if int(df.at[j, "fromlink"])-1 in road_segments:
                 filtered_line_with_sequence.append(i)
@@ -140,15 +135,6 @@ def past_mode(road_A,road_B):
         print ("filtered_line_with_sequence_and_direction",filtered_line_with_sequence_and_direction)
     else:
         filtered_line_with_sequence_and_direction=filtered_line_with_sequence
-        # ID="5923"
-    # print (sclinkfield+symbol + "5923" + symbol)
-    # print ("filter_lines",filter_lines)
-
-    # p="="+str(df.at[df[df['linkindedb'] == int(filtered_line_with_sequence[0])+1].index.tolist()[0],"linkingeodb"])
-    # p.replace("\'","")
-    # print (p)
-    # ROAD_E_segs = arcpy.SelectLayerByAttribute_management(fr, 'NEW_SELECTION', sclinkfield+p)
-    # arcpy.CopyFeatures_management(ROAD_E_segs, arcpy.env.workspace + r'/'+filter_lines)
     return filtered_line_with_sequence_and_direction
 
 def prior_mode(road_A,road_B):
@@ -184,7 +170,6 @@ def prior_mode(road_A,road_B):
     filtered_line_with_sequence = []
     for i in road_segments:
         connections = df[df['fromlink'] == str(int(i) + 1)].index.tolist()
-        # print("filtered_line_with_sequence", connections)
         for j in connections:
             if int(df.at[j, "tolink"]) - 1 in road_segments:
                 filtered_line_with_sequence.append(i)
@@ -198,18 +183,6 @@ def prior_mode(road_A,road_B):
         print("filtered_line_with_sequence_and_direction", filtered_line_with_sequence_and_direction)
     else:
         filtered_line_with_sequence_and_direction = filtered_line_with_sequence
-        # ID="5923"
-    # print (sclinkfield+symbol + "5923" + symbol)
-    # print ("filter_lines",filter_lines)
-
-    # p="="+str(df.at[df[df['linkindedb'] == int(filtered_line_with_sequence[0])+1].index.tolist()[0],"linkingeodb"])
-    # p.replace("\'","")
-    # print (p)
-    # ROAD_E_segs = arcpy.SelectLayerByAttribute_management(fr, 'NEW_SELECTION', sclinkfield+p)
-    # arcpy.CopyFeatures_management(ROAD_E_segs, arcpy.env.workspace + r'/'+filter_lines)
-
-
-
     return filtered_line_with_sequence_and_direction
 
 def extract_road_in_road_position(extracted_postion_of_road_text):
@@ -261,6 +234,7 @@ def extract_road_in_road_position(extracted_postion_of_road_text):
         splitted_text = extracted_postion_of_road_text.split("prior to ")
         road1 = splitted_text[1]
         print(road1)
+    #new feature words could be flexibly added
     return road1,road2
 
 def KG2PD (p):
@@ -292,12 +266,10 @@ def determine_road_segment(road_position_phase,affect_road,road1,road2):
     return filtered_road_segment
 
 def determine_segment_direction (road_direction,all_road_segments_satisfying_road_position):
-    #road_segments=df[df.linkingeodb =="11624"].index.tolist() #string
-    #print(road_segments)
     if "both" in road_direction:
         return all_road_segments_satisfying_road_position
     else:
-        coordinate_of_inbound_direction = [110.715, -241.372, 860.536, 420.372]
+        coordinate_of_inbound_direction = [110.715, -241.372, 860.536, 420.372] #depends on the city
         coordinate_of_outbound_direction = [860.536, 420.372, 110.715, -241.372]
         coordinate_of_eastnound_direction = [0, 0, 1, 0]
         coordinate_of_southbound_direction = [0, 0, 0, -1]
@@ -330,8 +302,6 @@ def determine_segment_direction (road_direction,all_road_segments_satisfying_roa
             if angle_between_seg_and_direction<min_angle_between_seg_and_direction:
                 min_angle_between_seg_and_direction=angle_between_seg_and_direction
                 segment_with_highest_possibility=index
-            #print("segment_with_highest_possibility",all_road_segments_satisfying_road_position[segment_with_highest_possibility])
-            #segment_with_highest_possibility_DESB_index=df.at[all_road_segments_satisfying_road_position[segment_with_highest_possibility],"linkingeodb"]
             segment_with_highest_possibility_DESB_index=all_road_segments_satisfying_road_position[segment_with_highest_possibility]
         return segment_with_highest_possibility_DESB_index
 
@@ -341,21 +311,14 @@ arcpy.env.workspace =r"C:\Users\CivilIM\Documents\ArcGIS\Projects\RoadofLex\Road
 file_of_geodatabase=r"C:\Users\CivilIM\Documents\ArcGIS\Projects\RoadofLex"
 graph = Graph('http://localhost:7474', username='neo4j', password='ab014415')
 matcher = NodeMatcher(graph)
-#fc_list = arcpy.ListFeatureClasses()
-# for i in fc_list:
-#     print(i)
 fr= arcpy.env.workspace + '/LexStreets'
-#arcpy.CopyFeatures_management(r"C:\Users\zhou\Documents\ArcGIS\Projects\RoadofLex\RoadofLex.gdb\LexStreets", fr)
 df=pd.read_excel(file_of_geodatabase+r'\roadsegments.xls')
 def fuzzy_query_of_road_name(road):
     road.upper()
     road_after_fuzzy_match=""
     if road in df["name"]:
         return road
-    # elif df[df["name"].str.contains(road)].index.tolist()!=None:
-    #     road_after_fuzzy_match=df.at[df[df["name"].str.contains(road)].index.tolist()[0],"name"]
-    #     print (road_after_fuzzy_match)
-    #     return road_after_fuzzy_match
+
     else:
         min_dis=0 #1 is the best
         for road_name in df["name"]:
@@ -370,27 +333,18 @@ print ("quality",fuzzy_query_of_road_name("QUALTY"))
 print(df)
 df_kg=pd.read_excel(file_of_geodatabase+r'\kg.xls')
 
-#filter_lines=between_mode("S UPPER ST","UMSTEAD ALY","W MAXWELL ST")
 for index,p in enumerate(["Road_status","Road_direction","Road_position","Lane_status","Road_lane","Lane_position","Lane_direction"]):
     s,p_r,o=KG2PD(p)
     df_kg.iat[index,0]=s
     df_kg.iat[index, 1] = p
     df_kg.iat[index, 2] = o
 print("knowledge graph:", df_kg)
-#read the knowledge gragh
 affect_road=df_kg.at[df_kg[df_kg.P == "Road_position"].index.tolist()[0],"S"]
 road1,road2=extract_road_in_road_position(df_kg.at[df_kg[df_kg.P == "Road_position"].index.tolist()[0],"O"])
 print ("road1,road2",road1,road2)
 filter_lines=determine_road_segment(df_kg.at[df_kg[df_kg.P == "Road_position"].index.tolist()[0],"O"],affect_road,road1,road2)
 print("source_of_filtered_lines",filter_lines)
 segment_with_highest_possibility_DESB_index=filter_lines
-# cursor=arcpy.SearchCursor(arcpy.env.workspace+"\\"+filter_lines) #search the records in the shp file
-# for row in cursor:
-#     print("row.SCLINK",row.SCLINK) #int
-#     road_segments=df[df.linkingeodb ==str(row.SCLINK)].index.tolist() #string,extract the index of road segment (two segment)
-#     #print("road_segments",road_segments)
-#     segment_with_highest_possibility_DESB_index=determine_segment_direction(df_kg.at[df_kg[df_kg.P == "Road_direction"].index.tolist()[0],"O"],road_segments) # later change it to item set
-#     print("segment_with_highest_possibility_DESB_index",segment_with_highest_possibility_DESB_index) #pandas索引56，编号57
 
 def lane_position_conditions(segment_with_highest_possibility_DESB_index,lane_position_text):
     affected_lane_from_pos=[]
@@ -432,7 +386,7 @@ def  lane_direction_conditions(segment_with_highest_possibility_DESB_index,lane_
             direction_text = "right turn"
         print("connecter:", df.at[i, "fromlane"], df.at[i, "tolane"], df.at[i, "numlanes"])
 
-        lane_no = df.at[i, "fromlane"]  # chuli lane de xuhao
+        lane_no = df.at[i, "fromlane"]
         splitted_lane_no = lane_no.split("-")
         for p in range(int(splitted_lane_no[1]), int(splitted_lane_no[1]) + int(df.at[i, "numlanes"])):
             #print("lane information", df.at[i, "fromlink"], p, direction_text, df.at[i, "tolink"], df.at[i, "numlanes"])
@@ -445,8 +399,6 @@ def  lane_direction_conditions(segment_with_highest_possibility_DESB_index,lane_
     #print(lane_direction_text, "lane_direction_text")
     affected_lane = []
     if "right" in lane_direction_text and "turn" in lane_direction_text:
-        # c=df_lane_direction.at[df_lane_direction[df_lane_direction.direction_text == "right turn"]].index.tolist()
-        # affected_lane=df_lane_direction.at[df_lane_direction[df_lane_direction['direction_text'] == "right turn"].index.tolist()[0],"from lane"]
         for i in df_lane_direction[df_lane_direction['direction_text'] == "right turn"].index.tolist():
             affected_lane.append(df_lane_direction.at[i, "from lane"])
     if "left turn" in lane_direction_text and "turn" in lane_direction_text:
@@ -486,7 +438,6 @@ def  lane_direction_conditions(segment_with_highest_possibility_DESB_index,lane_
     return affected_lane,df_lane_direction
 
 
-#if df_kg.at[df_kg[df_kg.P == "Lane_status"].index.tolist()[0],"O"]!="Blank" and df_kg.at[df_kg[df_kg.P == "Road_lane"].index.tolist()[0],"S"]==df_kg.at[df_kg[df_kg.P == "Road_status"].index.tolist()[0],"S"]:
 if df_kg.at[df_kg[df_kg.P == "Lane_status"].index.tolist()[0], "O"] != "Blank" :
 
     affected_lane_from_dir=[]
@@ -527,7 +478,6 @@ else:
 
 
 information2DEDB=[[],[]]
-#information2DEDB[0]=int(segment_with_highest_possibility_DESB_index)+1
 information2DEDB[0]=int(segment_with_highest_possibility_DESB_index[0])+1
 information2DEDB[1]=affected_lane_in_the_incident
 print("information2DEDB",information2DEDB)
@@ -549,8 +499,7 @@ else:
         Vissim.Net.Links.ItemByKey(int(information2DEDB[0])).Lanes.ItemByKey(int(lane_no[1])).SetAttValue("BlockedVehClasses", "10,20,30,40,50")
 #    Vissim.Net.Links.ItemByKey(df_lane_direction[df_lane_direction.P == "Lane_direction"].index.tolist()[0], "connector"]).Lanes.ItemByKey(int(lane_no[1])).SetAttValue("BlockedVehClasses", "10,20,30,40,50")
 print("topology updated")
-#Vissim.Simulation.RunContinuous()
-#Vissim.Net.SignalControllers.OptimizeAll()
+
 
 
 

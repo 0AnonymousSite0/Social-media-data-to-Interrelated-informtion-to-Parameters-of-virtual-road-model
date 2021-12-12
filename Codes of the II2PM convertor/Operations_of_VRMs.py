@@ -1,6 +1,5 @@
 from __future__ import print_function
 import os
-# COM-Server
 import win32com.client as com
 import numpy as np
 import time
@@ -9,31 +8,16 @@ time_start=time.time()
 ## Connecting the COM Server => Open a new Vissim Window:
 #Vissim = com.gencache.EnsureDispatch("Vissim.Vissim") #
 Vissim = com.Dispatch("Vissim.Vissim") # once the cache has been generated, its faster to call Dispatch which also creates the connection to Vissim.
-# If you have installed multiple Vissim Versions, you can open a specific Vissim version adding the version number
-# Vissim = com.gencache.EnsureDispatch("Vissim.Vissim.10") # Vissim 10
-#Vissim = com.gencache.EnsureDispatch("Vissim.Vissim.11") # Vissim 11
-### for advanced users, with this command you can get all Constants from PTV Vissim with this command (not required for the example)
-##import sys
-##Constants = sys.modules[sys.modules[Vissim.__module__].__package__].constants
 
-#Path_of_COM_Basic_Commands_network = os.getcwd() #'C:\\Users\\Public\\Documents\\PTV Vision\\PTV Vissim 11\\Examples Training\\COM\\Basic Commands\\'
-#Path_of_COM_Basic_Commands_network = os.getcwd('D:\\ZHOUSHENGHUA\\VISSIM\\')
-def Set_Vehicle_Route_Decision (SVRD,SVR,new_relativ_flow,TimeInterval='RelFlow(2)', ): #修改单个方向的车辆比例
-    # Set relative flow of a static vehicle route of a static vehicle routing decision:
-    #SVRD_number = 1  # SVRD = Static Vehicle Routing Decision
-    #SVR_number = 1  # SVR = Static Vehicle Route (of a specific Static Vehicle Routing Decision)
-    #new_relativ_flow = 0.6
+def Set_Vehicle_Route_Decision (SVRD,SVR,new_relativ_flow,TimeInterval='RelFlow(2)', ):
     Vissim.Net.VehicleRoutingDecisionsStatic.ItemByKey(SVRD).VehRoutSta.ItemByKey(SVR).SetAttValue(TimeInterval, new_relativ_flow)
-    # 'RelFlow(1)' means the first defined time interval; to access the third defined time interval: 'RelFlow(3)'
     return None
 def Set_Vehicel_Composition (Veh_composition_number, percentage_of_Car, percentage_of_HGV):
     Rel_Flows = Vissim.Net.VehicleCompositions.ItemByKey(Veh_composition_number).VehCompRelFlows.GetAll()
     Rel_Flows[0].SetAttValue('VehType', 100)  # Changing the vehicle type
     Rel_Flows[1].SetAttValue('VehType', 200)  # Changing the vehicle type
-    #Rel_Flows[2].SetAttValue('VehType', 300)  # Changing the vehicle type
     Rel_Flows[0].SetAttValue('RelFlow', percentage_of_Car) # Changing the relative flow
     Rel_Flows[1].SetAttValue('RelFlow', percentage_of_HGV) # Changing the relative flow of the 2nd Relative Flow.
-    #Rel_Flows[2].SetAttValue('RelFlow', percentage_of_Bus) # Changing the relative flow of the 2nd Relative Flow.
     return None
 def Set_Vehicle_Speed (ItemKey,Bottom,Up):
     p=Vissim.Net.DesSpeedDistributions.ItemByKey(ItemKey).SpeedDistrDatPts.GetAll() #1052
@@ -67,7 +51,7 @@ def redistribute(a,b,c,j):
 
     return p
 def adjust_traffic_flow(affectdroad):
-    for i in range (1,158):
+    for i in range (1,158): #depends on the number of roads
         if i!=None:
             a=[0,0,0,0] 
             Number_of_Dest_Links=len(Vissim.Net.VehicleRoutingDecisionsStatic.ItemByKey(i).VehRoutSta.GetAll())

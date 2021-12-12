@@ -8,9 +8,6 @@ def del_bookname(entity_name):
         entity_name = entity_name[1:-1]
     return entity_name
 
-
-
-
 def load_result(predict_filename):
     result_dict = {}
     with open(predict_filename) as gf:
@@ -96,7 +93,6 @@ def calc_pr(predict_filename, golden_filename):
         predict_sum += len(predict_spo_set)
         for spo in predict_spo_set:
             print("spo", spo)
-            #print(is_spo_correct(spo, golden_spo_set, alias_dict, loc_dict))
             if is_spo_correct(spo, golden_spo_set, alias_dict, loc_dict):
                 correct_sum += 1
     print('correct spo num = ', correct_sum)

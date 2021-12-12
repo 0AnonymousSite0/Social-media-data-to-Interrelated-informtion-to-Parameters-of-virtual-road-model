@@ -1,18 +1,5 @@
-# coding=utf-8
-# Copyright 2018 The Google AI Language Team Authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-"""BERT finetuning runner."""
+
+
 
 from __future__ import absolute_import
 from __future__ import division
@@ -211,9 +198,7 @@ class DataProcessor(object):
 
 
 class SKE_2019_Sequence_labeling_Processor(DataProcessor):
-    """Processor for the SKE_2019 data set"""
 
-    # SKE_2019 data from http://lic2019.ccf.org.cn/kg
 
     def __init__(self):
         self.language = "zh"
@@ -234,7 +219,6 @@ class SKE_2019_Sequence_labeling_Processor(DataProcessor):
         return self._create_example(self.get_examples(os.path.join(data_dir, "valid")), "valid")
 
     def get_test_examples(self, data_dir):
-        #with open(os.path.join(data_dir, os.path.join("test", "token_in_and_one_predicate.txt")), encoding='utf-8') as token_in_f:
         with open(r"D:\ZHOUSHENGHUA\PycharmProjects\Entity-Relation-Extraction-master\bin\subject_object_labeling\sequence_labeling_data\test\token_in_and_one_predicate.txt", encoding='utf-8') as token_in_f:
             token_in_list = [seq.replace("\n", '') for seq in token_in_f.readlines()]
             examples = token_in_list
@@ -246,9 +230,7 @@ class SKE_2019_Sequence_labeling_Processor(DataProcessor):
         return BIO_token_labels
 
     def get_predicate_labels(self):
-        #return ['Road_status','Lane_status','At','PRIOR',	'PAST',	'Bet', 'LaneOfRoad','Lane_direction','Lane_position','Road_direction','Lane_number']
         return ['Road_status','Lane_status','Road_position','Lane_of_Road','Lane_direction','Lane_position','Road_direction']
-        #return ['丈夫', '上映时间', '专业代码', '主持人', '主演', '主角', '人口数量', '作曲', '作者', '作词', '修业年限', '出品公司', '出版社', '出生地', '出生日期', '创始人', '制片人', '占地面积', '号', '嘉宾', '国籍', '妻子', '字', '官方语言', '导演', '总部地点', '成立日期', '所在城市', '所属专辑', '改编自', '朝代', '歌手', '母亲', '毕业院校', '民族', '气候', '注册资本', '海拔', '父亲', '目', '祖籍', '简称', '编剧', '董事长', '身高', '连载网站', '邮政编码', '面积', '首都']
 
     def _create_example(self, lines, set_type):
         """Creates examples for the training and dev sets."""

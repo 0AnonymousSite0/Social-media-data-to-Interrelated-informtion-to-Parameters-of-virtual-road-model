@@ -139,8 +139,7 @@ myStreamListener = MyStreamListener()
 myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
 #api.verify_credentials()
 
-myStream.filter(track=["keywords for searching tweets"], filter_level="low",locations=[-84.501918,38.039574,-84.499156,38.049216], is_async=True)
-#locations=[-84.501918,38.039574,-84.499156,38.049216]
+myStream.filter(track=["keywords for searching tweets"], filter_level="low",locations=["depends on the city"], is_async=True)
 
 print (myStream)
 #print (myStreamListener.on_status())
