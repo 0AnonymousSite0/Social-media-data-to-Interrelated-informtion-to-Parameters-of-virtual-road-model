@@ -11,7 +11,7 @@
 
 1.1 This repository aims at providing the codes and data regarding the paper entitled “……” for the public, and it is developed by The University of ****.
 
-1.2 All codes are developed on Python 3.6 or 3.7, and the IDE adopted is PyCharm (Professional version). The codes also support the GPU computing for higher speed; the Navida CUDA we adopted is V10.0.130. The Gis platform is Arcgis Pro 2.3, and the VRM platform is VISSIM 11; their liciences are necessary. 
+1.2 All codes are developed on Python 3.6 or 3.7, and the IDE adopted is PyCharm (Professional version). The codes also support the GPU computing for higher speed; the Navida CUDA we adopted is V10.0.130. The Gis platform is Arcgis Pro 2.3, and the VRM platform is VISSIM 11; their licenses are necessary. 
 
 1.3 We greatly appreciate the selfless spirits of these voluntary contributors of a series of open python libraries, including 
 Bert (https://github.com/google-research/bert), Tensorflow (https://github.com/tensorflow/models), pytorch (https://github.com/pytorch/pytorch), Keras (https://github.com/keras-team/keras), Numpy (https://numpy.org/), labelImg (https://github.com/tzutalin/labelImg), pyExcelerator (https://github.com/WoLpH/pyExcelerator), py2neo (https://github.com/py2neo-org/py2neo), some base works (https://github.com/yongzhuo/Keras-TextClassification, https://github.com/zjunlp/DeepKE/tree/master), and so on. Our work stands on the shoulders of these giants.
@@ -24,7 +24,7 @@ Bert (https://github.com/google-research/bert), Tensorflow (https://github.com/t
 
 # 2 The specifications of critical codes
 
-## 2.1 Run the whole approach: “SMD2II2PM.py” 
+## 2.1 Run the whole approach: “The improved SMDS.py” 
 
 Use your own key of twitter API and Neo4j parameters
 
@@ -38,15 +38,15 @@ Adjust the file directories regarding the convertor
 
 ![image](https://github.com/0AnonymousSite0/Social-media-for-road-transport-model/blob/main//Screenshots/Screenshot3.jpg)
 
-## 2.2 Train the SMD2II model and develop the II2PM convertor:
+## 2.2 Train the SMD2II model and develop the semantic convertor:
 
-File dictionaries of the codes for training the SMD2II model and developing the II2PM convertor
+File dictionaries of the codes for training the SMD2II model and developing the semantic convertor
 
 ![image](https://github.com/0AnonymousSite0/Social-media-data-to-Interrelated-informtion-to-Parameters-of-virtual-road-model/blob/main/Screenshots/File%20dictionaries%20of%20codes.png)
 
 The screenshot of testing the finally outputted interreation triplets of SMD2II model  
 
-![image](https://github.com/0AnonymousSite0/Social-media-data-to-Interrelated-informtion-to-Parameters-of-virtual-road-model/blob/main/Fig.%20S1%20Final_Precision_Recall_F1_of_SMD2II.png)
+![image](https://github.com/0AnonymousSite0/Social-media-data-to-Interrelated-informtion-to-Parameters-of-virtual-road-model/blob/main/Fig.%20S1%20Final_Precision_Recall_F1_of_SMD2II_model.png)
 
 
 
