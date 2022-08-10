@@ -1,7 +1,8 @@
 # Extract interrelated information from social media data and incorporate them into virtual road models
 
 ## 
-$\color{red}{！！！ As the paper is under review, all contents in this repository currently are not allowed to be re-used by anyone until this announcement is deleted.}$  
+$\color{red}{As the paper is under review, all contents in this repository currently are not allowed to be re-used by anyone until this announcement is deleted.}$  
+$\color{rgb(255,0,0)}{红色字}$
 
 # 0. A demonstration video of the improved SMDS 
 
